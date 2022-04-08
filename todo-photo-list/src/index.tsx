@@ -6,6 +6,8 @@ import { ThemeProvider } from '@mui/material';
 import { Theme } from '@emotion/react';
 import { createTheme } from '@mui/material/styles';
 import { grey, purple } from '@mui/material/colors';
+import { store } from './store';
+import { Provider } from 'react-redux';
 
 const theme: Theme = createTheme({
   typography: {
@@ -33,11 +35,13 @@ const theme: Theme = createTheme({
 });
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
 

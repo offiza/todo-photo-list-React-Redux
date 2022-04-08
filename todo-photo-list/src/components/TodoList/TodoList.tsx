@@ -10,26 +10,17 @@ interface TodoListProps {
 
 export const TodoList: FC<TodoListProps> = ({ todoItems }) => {
 
-  const completeTodo = () => {
-
-  }
-
-  const deleteTodo = () => {
-
-  }
-
   return (
     <Box sx={{ maxWidth: '800px', margin: 'auto', padding: '10px 30px' }}>
       <AddTodo />
-      {!!todoItems ?
+      {todoItems.length ?
         todoItems.map((todoItem) => {
           if (todoItem)
-            return <TodoItem key={todoItem.id} todoItem={todoItem} completeTodo={completeTodo} deleteTodo={deleteTodo} />
+            return <TodoItem key={todoItem.id} todoItem={todoItem}  />
         })
         :
-        < Typography sx={{ marginTop: '10px', fontSize: '20px', textAlign: 'center' }}>Now todos</Typography>
+        < Typography sx={{ marginTop: '20px', fontSize: '24px', textAlign: 'center', fontWeight: '600' }}>No todos</Typography>
       }
-
     </Box >
   )
 }
