@@ -23,9 +23,9 @@ export const todoReducer = (
       return {
         ...state,
         todos: state.todos.map(todo => {
-          console.log(todo);
-          // if (todo.id === action.payload)
-          //   todo.completed = !todo.completed
+          if (todo.id === action.payload)
+            todo.completed = !todo.completed
+          return todo;
         })
       };
     default:
