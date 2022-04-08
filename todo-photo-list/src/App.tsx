@@ -3,6 +3,7 @@ import { HomePage } from './components/HomePage/HomePage';
 import { NavBar } from './components/NavBar/NavBar';
 import { PhotoListPage } from './components/PhotoListPage/PhotoList';
 import { TodoListPage } from './components/TodoListPage/TodoListPage';
+import { TodoPage } from './components/TodoPage/TodoPage';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="*" element={<Navigate to="/home" />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/todolist" element={<TodoListPage />} />
+        <Route path="/todo/:id" element={<TodoPage />} />
         <Route path="/photolist" element={<PhotoListPage />} />
       </Routes>
     </Router>

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { createTodo } from '../../store/actions/todo';
 import { Todo } from '../../../libs/common';
+import md5 from 'md5';
 
 export const AddTodo = () => {
   const dispatch = useDispatch()
@@ -13,7 +14,7 @@ export const AddTodo = () => {
     if (!title.trim()) return;
 
     const candidate: Todo = {
-      id: `${Date.now()}`,
+      id: md5(title + Date.now()),
       title: title,
       completed: false
     }

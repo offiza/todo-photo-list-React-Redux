@@ -5,6 +5,8 @@ import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';
 import { completeTodo, removeTodo, editTodo } from '../../store/actions/todo';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import { Link } from 'react-router-dom';
 
 interface TodoItemProps {
   todoItem: Todo;
@@ -57,6 +59,11 @@ export const TodoItem: FC<TodoItemProps> = ({ todoItem }) => {
           }
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Link to={`/todo/${todoItem.id}`}>
+            <IconButton >
+              <OpenInNewIcon />
+            </IconButton>
+          </Link>
           <IconButton onClick={() => setIsEdit(!isEdit)}>
             <ModeEditIcon />
           </IconButton>
