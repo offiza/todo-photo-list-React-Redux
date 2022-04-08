@@ -1,7 +1,8 @@
 import {
   TODO_COMPLETE,
   TODO_CREATE,
-  TODO_REMOVE
+  TODO_REMOVE,
+  TODO_EDIT
 } from '../types/todo';
 import { TodoAction, TodoState } from '../types';
 import { Todo } from '../../../libs/common';
@@ -37,6 +38,16 @@ export const todoReducer = (
           return todo;
         }),
       };
+      case TODO_EDIT:
+        return {
+          ...state,
+          todos: state.todos.map(function (todo) {
+            if (todo.id === action.payload.id) {
+              todo.title = action.payload.title
+            }
+            return todo;
+          }),
+        }
     default:
       return state;
   }
