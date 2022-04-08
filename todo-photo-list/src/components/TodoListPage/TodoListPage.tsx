@@ -1,28 +1,20 @@
 import { Box, Typography } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Todo } from '../../../libs/common';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { TodoList } from '../TodoList/TodoList';
 
 export const TodoListPage = () => {
-  // const todoItem1: Todo = {
-  //   id: '1',
-  //   title: 'eat pizza',
-  //   completed: false,
-  // }
-  // const todoItem2: Todo = {
-  //   id: '2',
-  //   title: 'eat pizza2',
-  //   completed: false,
-  // }
+  localStorage.clear();
 
-  // const todoItems = [todoItem1, todoItem2];
   
-  const dispatch = useDispatch();
   const { todos} = useTypedSelector((state) => state.todos)
 
-  console.log(todos);
+  useEffect(() => {
+    localStorage.clear();
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos])
 
   return (
     <Box sx={{ margin: '100px auto', }}>

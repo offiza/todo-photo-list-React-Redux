@@ -4,9 +4,12 @@ import {
   TODO_REMOVE
 } from '../types/todo';
 import { TodoAction, TodoState } from '../types';
+import { Todo } from '../../../libs/common';
+
+const todos: Todo[] = JSON.parse(`${localStorage.getItem('todos')}`);
 
 const initialState: TodoState = {
-  todos: [],
+  todos: todos ? [...todos] : []
 };
 
 export const todoReducer = (
@@ -24,11 +27,15 @@ export const todoReducer = (
     case TODO_COMPLETE:
       return {
         ...state,
-        todos: state.todos.map(todo => {
-          if (todo.id === action.payload)
+        todos: state.todos.map(function (todo) {
+          if (todo.id === action.payload) {
             todo.completed = !todo.completed
+            if (!todo.completed) {
+            }
+
+          }
           return todo;
-        })
+        }),
       };
     default:
       return state;
