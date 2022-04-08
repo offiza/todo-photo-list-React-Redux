@@ -24,7 +24,7 @@ export const TodoItem: FC<TodoItemProps> = ({ todoItem }) => {
 
     dispatch(removeTodo(id));
   }
-
+  
   return (
     <Box sx={{ backgroundColor: !todoItem.completed ? '#e8f5e9' : '#efefef', borderBottom: '1px solid gray', p: '4px' }}>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>

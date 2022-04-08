@@ -17,8 +17,10 @@ export const todoReducer = (
     case TODO_CREATE:
       return { ...state, todos: [...state.todos, action.payload] };
     case TODO_REMOVE:
-      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-      return { ...state, todos: state.todos.filter((todo) => { todo.id !== action.payload }) };
+      return {
+        ...state,
+        todos: state.todos.filter((todo) => { return todo.id !== action.payload })
+      }
     case TODO_COMPLETE:
       return {
         ...state,
