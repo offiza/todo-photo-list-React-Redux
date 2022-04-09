@@ -13,6 +13,33 @@ const initialState: TodoState = {
   todos: todos ? [...todos] : []
 };
 
+const completeTodo = (todos: Todo[], action: any) => {
+  let todoIndex = -1;
+  let lastTodo: Todo | null = null;
+
+  const newTodos: Todo[] = todos.map(function (todo, index) {
+    if (todo.id === action.payload) {
+      todo.completed = !todo.completed
+      if (todo.completed) {
+        todoIndex = index;
+        lastTodo = todo;
+      }
+    }
+    return todo;
+  })
+
+  console.log(todoIndex)
+
+  if (todoIndex !== -1 && lastTodo) {
+    newTodos.splice(todoIndex, 1);
+    newTodos.push(lastTodo);
+
+    console.log(todoIndex)
+  }
+
+  return newTodos;
+}
+
 export const todoReducer = (
   state: TodoState = initialState,
   action: any
@@ -28,26 +55,18 @@ export const todoReducer = (
     case TODO_COMPLETE:
       return {
         ...state,
+        todos: completeTodo(state.todos, action)
+      };
+    case TODO_EDIT:
+      return {
+        ...state,
         todos: state.todos.map(function (todo) {
-          if (todo.id === action.payload) {
-            todo.completed = !todo.completed
-            if (!todo.completed) {
-            }
-
+          if (todo.id === action.payload.id) {
+            todo.title = action.payload.title
           }
           return todo;
         }),
-      };
-      case TODO_EDIT:
-        return {
-          ...state,
-          todos: state.todos.map(function (todo) {
-            if (todo.id === action.payload.id) {
-              todo.title = action.payload.title
-            }
-            return todo;
-          }),
-        }
+      }
     default:
       return state;
   }
