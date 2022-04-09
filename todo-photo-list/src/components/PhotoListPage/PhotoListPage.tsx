@@ -1,4 +1,4 @@
-import { Box, Input, Typography, TextField, Button } from '@mui/material';
+import { Box, Typography, TextField, Button } from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react';
 import { useGetPhoto } from '../../hooks/useGetPhoto';
 import { PhotoList } from '../PhotoList/PhotoList';
@@ -19,8 +19,6 @@ export const PhotoListPage = () => {
     if (tempAlbumId === albumId)
       setIsDisable(true);
     else setIsDisable(false);
-    console.log(isDisable);
-
   }, [tempAlbumId])
 
 

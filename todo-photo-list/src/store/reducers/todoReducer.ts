@@ -4,7 +4,7 @@ import {
   TODO_REMOVE,
   TODO_EDIT
 } from '../types/todo';
-import { TodoAction, TodoState } from '../types';
+import { TodoState } from '../types';
 import { Todo } from '../../../libs/common';
 
 const todos: Todo[] = JSON.parse(`${localStorage.getItem('todos')}`);
@@ -28,13 +28,9 @@ const completeTodo = (todos: Todo[], action: any) => {
     return todo;
   })
 
-  console.log(todoIndex)
-
   if (todoIndex !== -1 && lastTodo) {
     newTodos.splice(todoIndex, 1);
     newTodos.push(lastTodo);
-
-    console.log(todoIndex)
   }
 
   return newTodos;

@@ -1,4 +1,4 @@
-import { Grid, Box, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import React, { FC } from 'react';
 import { Photo } from '../../../libs/common';
 

@@ -1,6 +1,5 @@
 import { Box, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Todo } from '../../../libs/common';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
@@ -12,16 +11,9 @@ export const TodoPage = () => {
   const [todoItem, setTodoItem] = useState<Todo>();
 
   useEffect(() => {
-    console.log(todos);
-    console.log(todoItem);
-    console.log(params);
     setTodoItem(todos.find(todo => {
       return todo.id = params.id;
     }))
-    console.log(todos);
-
-    console.log(todoItem);
-
   }, [params])
 
   return (
