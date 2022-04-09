@@ -9,6 +9,7 @@ export const PhotoListPage = () => {
   const [isDisable, setIsDisable] = useState(false);
 
   const { album, error } = useGetPhoto(albumId);
+  console.log(error);
 
   const handleSubmit = () => {
     setAlbumId(tempAlbumId);
@@ -31,8 +32,13 @@ export const PhotoListPage = () => {
         <TextField value={tempAlbumId} onChange={(event) => { setTempAlbumId(parseInt(event.currentTarget.value)) }} fullWidth type='number' color='success' ></TextField>
         <Button color='success' onClick={handleSubmit} disabled={isDisable}>Get photos</Button>
       </Box>
-      <PhotoList album={album}>
-      </PhotoList>
+      {!error ?
+        <PhotoList album={album} />
+        :
+        <Box>
+          <Typography>Error!</Typography>
+        </Box>
+      }
     </Box>
   )
 }
