@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { completeTodo, removeTodo, editTodo } from '../../store/actions/todo';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { Link } from 'react-router-dom';
+import CheckIcon from '@mui/icons-material/Check';
 
 interface TodoItemProps {
   todoItem: Todo;
@@ -41,32 +42,40 @@ export const TodoItem: FC<TodoItemProps> = ({ todoItem }) => {
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Checkbox color="success" onChange={() => { handleCompleteTodo(todoItem.id) }} checked={todoItem.completed} />
+        </Box>
 
-          {!isEdit ?
+        {!isEdit ?
+          <Box sx={{ width: '100%' }}>
             <Typography sx={{ textDecoration: `${todoItem.completed && 'line-through'}` }}>
               {todoItem.title}
             </Typography>
-            :
-            <Box>
-              <TextField
-                value={title}
-                color='success'
-                onChange={(event) => { setTitle(event.currentTarget.value) }}
-                sx={{ backgroundColor: '#fff', }}
-              />
-              <Button color='success' sx={{ height: '56px' }} onClick={() => handleEditTodo(todoItem.id, title)}>SAVE</Button>
-            </Box>
-          }
-        </Box>
+          </Box>
+          :
+          <Box sx={{ width: '100%', display: 'flex' }}>
+            <TextField
+              fullWidth
+              value={title}
+              color='success'
+              onChange={(event) => { setTitle(event.currentTarget.value) }}
+              sx={{ backgroundColor: '#fff', }}
+            />
+          </Box>
+        }
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <Link to={`/todo/${todoItem.id}`}>
             <IconButton >
               <OpenInNewIcon />
             </IconButton>
           </Link>
-          <IconButton onClick={() => setIsEdit(!isEdit)}>
-            <ModeEditIcon />
-          </IconButton>
+          {!isEdit ?
+            <IconButton onClick={() => setIsEdit(!isEdit)}>
+              <ModeEditIcon />
+            </IconButton>
+            :
+            <IconButton onClick={() => handleEditTodo(todoItem.id, title)}>
+              <CheckIcon />
+            </IconButton>
+          }
           <IconButton onClick={() => handleDeleteTodo(todoItem.id)}>
             <DeleteIcon />
           </IconButton>
