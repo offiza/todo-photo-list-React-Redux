@@ -24,10 +24,25 @@ export const AddTodo = () => {
     setTitle('');
   }
 
+  const handleKeyPress = async (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.charCode === 13) {
+      await AddTodo();
+    }
+  };
+
   return (
-    <Box sx={{ display: 'flex', margin: '20px 0', alignItems: 'center' }}>
-      <TextField fullWidth color='success' placeholder='What you want to do?' value={title} onChange={(event) => { setTitle(event.currentTarget.value) }} />
-      <Button color='success' sx={{ height: '56px' }} onClick={() => handleCreateTodo(title)}>Add</Button>
-    </Box>
+    <form >
+      <Box sx={{ display: 'flex', margin: '20px 0', alignItems: 'center' }}>
+        <TextField
+          fullWidth
+          color='success'
+          placeholder='What you want to do?'
+          value={title}
+          onChange={(event) => { setTitle(event.currentTarget.value) }}
+          onKeyPress={handleKeyPress}
+        />
+        <Button type='submit' color='success' sx={{ height: '56px' }} onClick={() => handleCreateTodo(title)}>Add</Button>
+      </Box>
+    </form>
   )
 }
