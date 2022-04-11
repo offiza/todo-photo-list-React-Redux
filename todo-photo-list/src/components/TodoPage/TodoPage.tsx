@@ -10,10 +10,13 @@ export const TodoPage = () => {
   const { todos } = useTypedSelector((state) => state.todos);
   const [todoItem, setTodoItem] = useState<Todo>();
 
+  console.log(todos);
+
   useEffect(() => {
-    setTodoItem(todos.find(todo => {
-      return todo.id = params.id;
-    }))
+    todos.forEach(todo => {
+      if (todo.id === params.id)
+        return setTodoItem(todo);
+    });
   }, [params])
 
   return (
