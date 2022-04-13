@@ -1,47 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { ThemeProvider } from '@mui/material';
-import { Theme } from '@emotion/react';
-import { createTheme } from '@mui/material/styles';
-import { grey, purple } from '@mui/material/colors';
+import theme from './theme';
 import { store } from './store';
 import { Provider } from 'react-redux';
 
-const theme: Theme = createTheme({
-  typography: {
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
-  },
-  palette: {
-    primary: {
-      main: purple[500],
-    },
-    secondary: {
-      main: grey[900],
-    },
-  },
-});
+const rootElement = document.getElementById('root');
+if (!rootElement) throw new Error('Failed to find the root element');
+const root = ReactDOM.createRoot(rootElement)
 
-ReactDOM.render(
+root.render(
   <Provider store={store}>
     <React.StrictMode>
       <ThemeProvider theme={theme}>
         <App />
       </ThemeProvider>
     </React.StrictMode>
-  </Provider>,
-  document.getElementById('root')
+  </Provider>
 );
 
