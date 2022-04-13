@@ -9,7 +9,6 @@ interface TodoListProps {
 }
 
 export const TodoList: FC<TodoListProps> = ({ todoItems }) => {
-
   return (
     <Box sx={{ maxWidth: '800px', margin: 'auto', padding: '10px 30px' }}>
       <AddTodo />

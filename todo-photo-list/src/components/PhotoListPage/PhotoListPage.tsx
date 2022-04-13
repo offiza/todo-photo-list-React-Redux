@@ -21,7 +21,6 @@ export const PhotoListPage = () => {
     else setIsDisable(false);
   }, [tempAlbumId])
 
-
   return (
     <Box sx={{ textAlign: 'center', margin: '100px auto 5px' }}>
       <Typography sx={{ fontWeight: '600', fontSize: '20px' }}>

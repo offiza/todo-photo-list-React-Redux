@@ -5,7 +5,6 @@ import { TodoList } from '../TodoList/TodoList';
 
 export const TodoListPage = () => {
   localStorage.clear();
-
   
   const { todos} = useTypedSelector((state) => state.todos)
 

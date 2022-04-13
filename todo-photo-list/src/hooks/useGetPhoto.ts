@@ -23,8 +23,6 @@ export const useGetPhoto = (albumId: number) => {
       });
   }, [albumId])
 
-
-
   return {
     album,
     error,
