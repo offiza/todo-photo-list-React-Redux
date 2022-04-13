@@ -10,7 +10,9 @@ export const AddTodo = () => {
   const dispatch = useDispatch()
   const [title, setTitle] = useState('');
 
-  const handleCreateTodo = (title: string) => {
+  const handleCreateTodo = (event: any, title: string) => {
+    event.preventDefault();
+
     if (!title.trim()) return;
 
     const candidate: Todo = {
@@ -26,7 +28,7 @@ export const AddTodo = () => {
 
   const handleKeyPress = async (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.charCode === 13) {
-      await AddTodo();
+      handleCreateTodo(event, title);
     }
   };
 
@@ -41,7 +43,7 @@ export const AddTodo = () => {
           onChange={(event) => { setTitle(event.currentTarget.value) }}
           onKeyPress={handleKeyPress}
         />
-        <Button type='submit' color='success' sx={{ height: '56px' }} onClick={() => handleCreateTodo(title)}>Add</Button>
+        <Button type='submit' color='success' sx={{ height: '56px' }} onClick={(event) => handleCreateTodo(event, title)}>Add</Button>
       </Box>
     </form>
   )

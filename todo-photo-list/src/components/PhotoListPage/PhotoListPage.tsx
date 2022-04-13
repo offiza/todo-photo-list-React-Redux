@@ -9,7 +9,6 @@ export const PhotoListPage = () => {
   const [isDisable, setIsDisable] = useState(false);
 
   const { album, error } = useGetPhoto(albumId);
-  console.log(error);
 
   const handleSubmit = () => {
     setAlbumId(tempAlbumId);
