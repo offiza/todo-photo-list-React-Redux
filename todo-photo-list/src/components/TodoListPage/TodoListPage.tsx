@@ -1,7 +1,5 @@
 import { Box, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Todo } from '../../../libs/common';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { TodoList } from '../TodoList/TodoList';
 

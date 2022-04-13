@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { Todo } from '../../../libs/common';
-import { Box, Checkbox, Typography, IconButton, TextField, Button } from '@mui/material';
+import { Box, Checkbox, Typography, IconButton, TextField } from '@mui/material';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useDispatch } from 'react-redux';

@@ -1,5 +1,5 @@
 import { Box, Typography, TextField, Button } from '@mui/material';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useGetPhoto } from '../../hooks/useGetPhoto';
 import { PhotoList } from '../PhotoList/PhotoList';
 
